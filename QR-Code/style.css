@@ -1,100 +1,160 @@
 :root{
-    --bcg-color: #001122;
-    --primary-color: #155e75;
-    --border-radius: 8px;
-    --secondary-color: #fff;
-    --border-color: #7fb7c9;
+    --bcg-color-start: #0a192f;
+    --bcg-color-end: #020c1b;
+    --primary-color-start: #172a45;
+    --primary-color-end: #2b4162;
+    --accent-color-start: #64ffda;
+    --accent-color-end: #4ac9b7;
+    --border-radius: 10px;
+    --secondary-color: #ccd6f6;
+    --border-color: #495670;
+    --font-body: 'Fira Sans', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
 }
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: var(--font-body);
+    transition: all 0.3s ease-in-out;
 }
 
 body{
+    font-family: var(--font-body);
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--bcg-color);
+    background: linear-gradient(to bottom right, var(--bcg-color-start), var(--bcg-color-end));
 }
 
 .box{
-    background-color: var(--primary-color);
-    padding: 30px;
-    width: 400px;
+    background: linear-gradient(to bottom, var(--primary-color-start), var(--primary-color-end));
+    padding: 40px;
+    width: 450px;
     border-radius: var(--border-radius);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color); /* Add a subtle border to the box */
 }
 
 .qr-header h1{
-    font-size: 26px;
+    font-size: 30px;
     text-align: center;
-    color: var(--secondary-color);
-    margin-bottom: 24px;
+    color: var(--accent-color-start); /* Keep a solid color for readability */
+    margin-bottom: 30px;
     text-transform: uppercase;
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
 }
 
 .qr-header input{
     width: 100%;
-    margin-block: 12px;
-}
-
-.qr-header input, select{
-    padding: 8px;
+    margin-block: 15px;
+    padding: 10px 12px;
     border-radius: var(--border-radius);
     font-size: 18px;
     outline: none;
-    border: 2px solid var(--border-color);
+    border: 1px solid var(--border-color);
+    background-color: #0b1d33;
+    color: var(--secondary-color);
+}
+
+.qr-header input:focus{
+    border-color: var(--accent-color-start);
+    box-shadow: 0 0 4px rgba(100, 255, 218, 0.5);
 }
 
 .qr-header label{
     color: var(--secondary-color);
     font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
 }
 
 .qr-header div{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.qr-header select{
+    padding: 10px;
+    border-radius: var(--border-radius);
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--border-color);
+    background-color: #0b1d33;
+    color: var(--secondary-color);
+}
+
+.qr-header select:focus{
+    border-color: var(--accent-color-start);
+    box-shadow: 0 0 4px rgba(100, 255, 218, 0.5);
 }
 
 .qr-footer{
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 }
 .qr-footer a{
-    background-color: var(--secondary-color);
+    background: linear-gradient(to right, var(--accent-color-start), var(--accent-color-end));
     text-decoration: none;
     font-size: 20px;
     padding: 14px 36px;
-    margin-inline: 2px;
-    color: var(--primary-color);
+    margin-inline: 5px;
+    color: var(--primary-color-start);
     font-weight: 600;
     border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.qr-footer a:hover{
+    opacity: 0.9; /* Slightly dim on hover for feedback */
+    transform: translateY(-2px);
 }
 
 .qr-body{
     display: grid;
     place-items: center;
-    padding:20px;
+    padding: 30px;
+    background-color: #0b1d33;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+    border: 1px solid var(--border-color); /* Add a subtle border */
 }
 
 .qr-body img{
     max-width: 100%;
     max-height: 100%;
-    margin-block: 10px;
-    padding: 20px;
-    border: 0.5px solid var(--border-color);
+    padding: 25px;
     border-radius: var(--border-radius);
+    background: linear-gradient(to bottom, var(--primary-color-start), var(--primary-color-end)); /* Gradient for the QR code area */
 }
 
 @media screen and (max-width:520px){
     .box{
-        width: 80%;
+        width: 90%;
+        padding: 20px;
+    }
+    .qr-header h1{
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .qr-header input, .qr-header select, .qr-header label{
+        font-size: 16px;
     }
     .qr-footer a{
-        padding: 12px;
+        padding: 10px 20px;
         font-size: 16px;
+        margin-inline: 2px;
+    }
+    .qr-body{
+        padding: 15px;
+    }
+    .qr-body img{
+        padding: 15px;
     }
 }
